@@ -78,7 +78,7 @@
      items: [
         { title: 'Home', icon: 'mdi-home', link: "/" },
         { title: 'Register Compliant', icon: 'mdi-note-plus', link : "/register-complaint" },
-        { title: 'About', icon: 'mdi-help-box', link: "/about" },
+        { title: 'EmployeeLogin', icon: 'mdi-login', link: "/employee-login" },
       ],
        links: [
         'Home',

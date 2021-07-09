@@ -1,5 +1,6 @@
 <template>
-    <h1> Customer complaint page</h1>
+    <h1> PLease Login in first to register your complaint</h1>
+    
 </template>
 
 
