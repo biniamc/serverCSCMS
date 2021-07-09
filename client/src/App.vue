@@ -34,7 +34,7 @@
     </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="indigo" dark>
+    <v-app-bar app color="blue-grey darken-3" dark >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Application</v-toolbar-title>
@@ -44,7 +44,7 @@
      <router-view></router-view>
     </v-main>
     <v-footer
-    color="indigo" dark
+    color="blue-grey darken-3" dark
     
   >
     <v-row
@@ -62,10 +62,10 @@
         {{ link }}
       </v-btn>
       <v-col
-        class="primary lighten-2 py-4 text-center white--text"
+        class="blue-grey darken-1 text-center white--text"
         cols="12"
       >
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        {{ new Date().getFullYear() }} — <strong>Customer service and complaint system for EEU</strong>
       </v-col>
     </v-row>
   </v-footer>
@@ -78,7 +78,7 @@
      items: [
         { title: 'Home', icon: 'mdi-home', link: "/" },
         { title: 'Register Compliant', icon: 'mdi-note-plus', link : "/register-complaint" },
-        { title: 'EmployeeLogin', icon: 'mdi-login', link: "/employee-login" },
+        { title: 'Create Account', icon: 'mdi-login', link: "/create-account" },
       ],
        links: [
         'Home',

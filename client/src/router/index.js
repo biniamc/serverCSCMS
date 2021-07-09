@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import RegisterComplaint from '../views/RegisterComplaint';
-import EmployeeLogin from '../views/EmployeeLogin';
+import CreateAccount from '../views/CreateAccount';
 
 Vue.use(VueRouter)
 
@@ -18,9 +18,9 @@ const routes = [
     component: RegisterComplaint,
   },
   {
-    path: '/employee-login',
-    name: 'EmployeeLogin',
-    component: EmployeeLogin,
+    path: '/create-account',
+    name: 'create-account',
+    component: CreateAccount,
     // // route level code-splitting
     // // this generates a separate chunk (about.[hash].js) for this route
     // // which is lazy-loaded when the route is visited.
