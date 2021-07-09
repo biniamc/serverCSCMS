@@ -1,3 +1,9 @@
 <template>
-<h1> Admin Page</h1>
+<nav> Hello</nav>
 </template>
+
+<script>
+export default {
+    
+}
+</script>
