@@ -28,6 +28,7 @@ export default {
           {
             src: require("../assets/images/3.jpg"), 
                },
+               
         
         ],
       }
