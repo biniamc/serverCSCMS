@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
 import Login from './views/Login';
+import Customer from './views/Customer';
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,7 @@ const router = new VueRouter({
     {path:'/',component:Home},
       {path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
+       {path:'/Customer',component:Customer},
    ]
  })
 
