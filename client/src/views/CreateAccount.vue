@@ -26,7 +26,7 @@
     </v-toolbar>
 
 <v-navigation-drawer app v-model="drawer" class="blue-grey lighten-5">
-    <p class="display-2 mx-4 subheading grey--text">WCSCMS</p>
+    <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
     <v-list>
     <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
@@ -72,9 +72,25 @@
       >
         <v-card
           color="basil"
-          flat
+          flat class="ma-4"
         >
-          <v-card-text>{{ text }}</v-card-text>
+          <v-card-text>
+            <v-from>
+               <v-text-field
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Name"
+      required
+    ></v-text-field>
+            </v-from>
+
+
+
+          </v-card-text>
+         
+         
+    
         </v-card>
       </v-tab-item>
     </v-tabs-items>

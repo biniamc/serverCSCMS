@@ -1,4 +1,5 @@
 <template>
+<v-container>
 <nav> 
     <v-toolbar color="blue-grey darken-4" >
       
@@ -155,7 +156,10 @@
 
 
 </nav>
+</v-container>
+
 </template>
+
 
 <script>
 export default {
