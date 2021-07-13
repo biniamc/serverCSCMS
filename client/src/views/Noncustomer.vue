@@ -7,20 +7,18 @@
   >
  <div>
     <v-toolbar
-      dark
-      prominent
-      src="../assets/images/9.png" 
+    color="grey darken-4"
     >
     
 
-      <v-toolbar-title >CSCMS</v-toolbar-title>
+      <v-toolbar-title class="white--text">CSCMS</v-toolbar-title>
 
       <v-spacer></v-spacer>
 <router-link
         to="/"
         tag="v-btn"
       >
-      <v-btn icon>
+      <v-btn icon color="white">
         <v-icon>mdi-home</v-icon>
       </v-btn>
 </router-link>

@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <Header/>
-
-  <v-spacer></v-spacer>
+    
   
 <router-view></router-view>
 <v-spacer></v-spacer>

@@ -6,17 +6,32 @@
 <v-spacer></v-spacer>
 
 <v-toolbar-items>
+   <router-link
+        to="/"
+        tag="v-btn"
+      >
   <v-btn text>
-         <router-link to="/"> Home</router-link>  
+       Home
         
       </v-btn>
+      </router-link>
+      <router-link
+        to="/Noncustomer"
+        tag="v-btn"
+      >
       <v-btn text>
-         <router-link to="/Noncustomer"> Non-customer</router-link>  
+         Non-customer
         
       </v-btn>
+      </router-link>
+      <router-link
+        to="/Login"
+        tag="v-btn"
+      >
       <v-btn text>
-         <router-link to="/Login"> Log in</router-link>  
+          Log in
       </v-btn>
+      </router-link>
  
 </v-toolbar-items>
  </v-toolbar>
