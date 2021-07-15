@@ -1,17 +1,28 @@
 <template>
-  <v-app class="grey lighten-4">
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-  </v-app>
-</template>
+  <v-app>
+    
+<router-view></router-view>
+<v-spacer></v-spacer>
+    <v-footer>
+      <Footer/>
+    </v-footer>
+    </v-app>
+</template> 
 
 <script>
-export default {
-  name: "App",
-  data() {
-    return {};
-  },
-  links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
-};
+import Footer from'./components/Footer';
+
+ export default {
+    name:'App',
+    components:{
+    Footer
+    
+    },
+    data: () => ({
+     }),
+    };
+     
+
+  
+  
 </script>
