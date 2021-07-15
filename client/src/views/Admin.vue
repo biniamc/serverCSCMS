@@ -43,6 +43,9 @@
     </v-list>
 </v-navigation-drawer>
 </nav>
+
+
+
 <v-container fluid>
     <v-row justify="center">
       <v-subheader>List of Accounts</v-subheader>
@@ -111,13 +114,7 @@
                 <strong v-html="message.title"></strong>
               </v-col>
 
-              <!-- <v-col
-                v-if="message.excerpt"
-                class="grey--text text-truncate hidden-sm-and-down"
-              >
-                &mdash;
-                {{ message.excerpt }}
-              </v-col> -->
+          
             </v-row>
           </v-expansion-panel-header>
 

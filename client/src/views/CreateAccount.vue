@@ -38,7 +38,7 @@
         <v-list-item-content>
            <v-list-item-title class="dark--text">{{link.text}}</v-list-item-title>
         </v-list-item-content>
-           <v-list-item-title>
+           
     </v-list-item>
     </v-list>
     
@@ -55,7 +55,7 @@
 
     
   </v-card>
-<!-- new try at tab -->
+<!--  tabs -->
 <v-card>
   <v-tabs background-color="blue-grey lighten-5"
       color="indigo"
@@ -69,7 +69,7 @@
       <v-icon left>mdi-account</v-icon>
       Create Employee account
     </v-tab>
-
+<!--  first tabs -->
         <v-tab-item>
           <v-card flat >
          <v-from ref="form" v-model="valid" lazy-validation>
@@ -95,27 +95,84 @@
       label="E-mail"
       required
     ></v-text-field>
-              
-    <v-text-field class="ma-6"
-      v-model="number"
-      :counter="10" 
-      label="BP Number"
-      required
-    ></v-text-field>
+            
     <v-text-field class="ma-6"
       v-model="phoneNumber"
-      :counter="10"
       :rules="phoneNumberRules"
+      
       label="Phone number"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
       v-model="address"
       :counter="10"
-      :rules="addressRules"
       label="Address"
       required
     ></v-text-field>
+     <v-select :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
+    <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="User Name"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="password"
+      :counter="10"
+      :rules="passwordRules"
+      label="Password(BP number)"
+      required
+    ></v-text-field>
+
+    <v-btn class="ma-6 success"> Create Account </v-btn>
+    </v-from>
+    </v-card>
+        </v-tab-item>
+<v-tab-item>
+    <!-- second tab -->
+    <v-card flat>
+        <v-from ref="form" v-model="valid" lazy-validation>
+          
+     <v-text-field class="ma-6"
+      v-model="number"
+      :counter="10"
+      :rules="idRules"
+      label="Emp ID"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="First Name"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Last Name"
+      required
+    ></v-text-field>
+
+    <v-text-field class="ma-6"
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field> 
+     <v-text-field class="ma-6"
+      v-model="phoneNumber"
+      :rules="phoneNumberRules"
+      
+      label="Phone number"
+      required
+    ></v-text-field>
+     <v-select :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
+     <v-select :items="['Meberat Haile', 'Kidane Mihret']" label="Branch" class="ma-6"></v-select>
+    <v-select :items="['Assistant', 'Manager','Operation Maintenance', 'Care Worker']" label="Department" class="ma-6"></v-select>
+  
     <v-text-field class="ma-6"
       v-model="name"
       :counter="10"
@@ -130,44 +187,21 @@
       label="Password"
       required
     ></v-text-field>
-    <v-select :items= "[ 'Female', 'Male' ]"
-    label="Gender">
-      
-    </v-select>
-
-
+  <v-btn class="ma-6 success"> Create Account </v-btn>
+    
     </v-from>
     </v-card>
-        </v-tab-item>
-<v-tab-item>
-          <v-card flat>
-         <v-from ref="form" v-model="valid" lazy-validation>
-           <v-text-field class="ma-6"
-      v-model="name"
-      :counter="10"
-      :rules="nameRules"
-      label="Emp Name"
-      required
-    ></v-text-field></v-from></v-card>
-        </v-tab-item>
-
-
-
+   </v-tab-item>
 
   </v-tabs>
 </v-card>
-
   </v-container>
-
-
-
-
-
 
 </template>
 
 <script>
 export default {
+ 
     data() {
         return {
             drawer: false,
@@ -177,11 +211,32 @@ export default {
                 // { icon: 'recent_actors', text: 'View Users Account', route: '/view_accounts'},
 
             ],
-            agreement: false,
-            
+           valid: true,
+      name: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+       phoneNumber: '',
+      phoneNumberRules: [
+        [v => !!v || 'This field is required',
+        v => /^\d+$/.test(v)||'This field only accept numbers']
+      ],
+       name: '',
+      idRules: [
+        v => !!v || 'ID is required',
+        v => (v && v.length <= 20) || 'ID must be less than 10 characters',
+      ],     
            
      }
         }
+        
+        
     }
 
 </script>

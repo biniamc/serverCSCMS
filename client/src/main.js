@@ -7,6 +7,8 @@ import Home from './views/Home';
 import Noncustomer from './views/Noncustomer';
 import Login from './views/Login';
 import Customer from './views/Customer';
+import Admin from './views/Admin';
+import CreateAccount from './views/CreateAccount';
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,11 @@ const router = new VueRouter({
       {path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
        {path:'/Customer',component:Customer},
+       {path:'/Admin',component:Admin},
+       
+       {path:'/create-account',component:CreateAccount},
+
+       
    ]
  })
 
