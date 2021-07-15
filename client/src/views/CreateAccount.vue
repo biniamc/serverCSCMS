@@ -44,6 +44,8 @@
     
 </v-navigation-drawer>
 </nav>
+
+
  <v-card color="basil">
     <v-card-title class="text-center justify-center py-4">
       <h1 class="font-weight-bold text-h4 basil--text">
@@ -51,50 +53,90 @@
       </h1>
     </v-card-title>
 
-    <v-tabs
-      v-model="tab"
-      background-color="transparent"
-      color="basil"
-      grow
-    >
-      <v-tab
-        v-for="item in items"
-        :key="item"
-      >
-        {{ item }}
-      </v-tab>
-    </v-tabs>
+    
+  </v-card>
+<!-- new try at tab -->
+<v-card>
+  <v-tabs background-color="blue-grey lighten-5"
+      color="indigo"
+      grow>
+    <v-tab>
+      <v-icon left>mdi-account</v-icon>
+      Create Customer account
+    </v-tab>
+    
+    <v-tab>
+      <v-icon left>mdi-account</v-icon>
+      Create Employee account
+    </v-tab>
 
-    <v-tabs-items v-model="tab">
-      <v-tab-item
-        v-for="item in items"
-        :key="item"
-      >
-        <v-card
-          color="basil"
-          flat class="ma-4"
-        >
-          <v-card-text>
-            <v-from>
-               <v-text-field
+        <v-tab-item>
+          <v-card flat >
+         <v-from ref="form" v-model="valid" lazy-validation>
+   <v-text-field class="ma-6"
       v-model="name"
       :counter="10"
       :rules="nameRules"
-      label="Name"
+      label="First Name"
       required
     ></v-text-field>
-            </v-from>
+      </v-text-field>
+    <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Last Name"
+      required
+    ></v-text-field>
+   <v-text-field class="ma-6"
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+              
+    <v-text-field class="ma-6"
+      v-model="number"
+      :counter="10" 
+      label="BP Number"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="phoneNumber"
+      :counter="10"
+      :rules="phoneNumberRules"
+      label="Phone number"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="address"
+      :counter="10"
+      :rules="addressRules"
+      label="Address"
+      required
+    ></v-text-field>
+
+    </v-from>
+    </v-card>
+        </v-tab-item>
+<v-tab-item>
+          <v-card flat>
+         <v-from ref="form" v-model="valid" lazy-validation>
+           <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Emp Name"
+      required
+    ></v-text-field></v-from></v-card>
+        </v-tab-item>
 
 
 
-          </v-card-text>
-         
-         
-    
-        </v-card>
-      </v-tab-item>
-    </v-tabs-items>
-  </v-card>
+
+  </v-tabs>
+</v-card>
+
   </v-container>
 
 
@@ -117,12 +159,8 @@ export default {
             ],
             agreement: false,
             
-   tab: null,
-        items: [
-          'Customer Account', 'Employee Account', 
-        ],
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      }
+           
+     }
         }
     }
 

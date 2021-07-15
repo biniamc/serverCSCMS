@@ -42,6 +42,7 @@
     </v-list-item>
     </v-list>
 </v-navigation-drawer>
+</nav>
 <v-container fluid>
     <v-row justify="center">
       <v-subheader>List of Accounts</v-subheader>
@@ -155,7 +156,7 @@
   </v-container>
 
 
-</nav>
+
 </v-container>
 
 </template>
