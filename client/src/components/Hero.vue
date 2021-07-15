@@ -23,7 +23,7 @@ export default {
             src: require("../assets/images/1.jpg"),
           },
           {
-            src: require("../assets/images/2.jpg"), 
+            src: require("../assets/images/11.png"), 
           },
           {
             src: require("../assets/images/3.jpg"), 

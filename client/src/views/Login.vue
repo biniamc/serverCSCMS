@@ -1,8 +1,9 @@
 <template>
-    <h1>hii</h1>
+    <h1>hi</h1>
 </template>
 <script>
 export default {
+    name:"Login",
     
 }
 </script>

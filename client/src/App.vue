@@ -1,7 +1,6 @@
 <template>
   <v-app>
     
-  
 <router-view></router-view>
 <v-spacer></v-spacer>
     <v-footer>
@@ -11,11 +10,9 @@
 </template> 
 
 <script>
-
 import Footer from'./components/Footer';
 
-
-  export default {
+ export default {
     name:'App',
     components:{
     Footer

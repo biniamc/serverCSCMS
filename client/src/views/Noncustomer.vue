@@ -53,8 +53,8 @@
     <v-select
       v-model="select"
       :items="items"
-      :rules="[v => !!v || 'Item is required']"
-      label="Item"
+      :rules="[v => !!v || ' Case is required']"
+      label="Case"
       required
     ></v-select>
     <v-textarea
