@@ -88,6 +88,7 @@
       label="Last Name"
       required
     ></v-text-field>
+    
    <v-text-field class="ma-6"
       v-model="email"
       :rules="emailRules"
@@ -115,6 +116,25 @@
       label="Address"
       required
     ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="User Name"
+      required
+    ></v-text-field>
+    <v-text-field class="ma-6"
+      v-model="password"
+      :counter="10"
+      :rules="passwordRules"
+      label="Password"
+      required
+    ></v-text-field>
+    <v-select :items= "[ 'Female', 'Male' ]"
+    label="Gender">
+      
+    </v-select>
+
 
     </v-from>
     </v-card>
