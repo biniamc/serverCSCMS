@@ -29,7 +29,7 @@
     <p class="display-2 mx-4 subheading grey--text">CSCMS</p>
 
     <v-list>
-    <v-list-item v-for="link in links" :key="link.text" router :to="link.route"> 
+    <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
 
     <v-list-item-action>
         <v-icon class="mx-4">{{link.icon}}</v-icon>
@@ -74,15 +74,14 @@
           <v-card flat >
          <v-from ref="form" v-model="valid" lazy-validation>
    <v-text-field class="ma-6"
-      v-model="name"
+      v-model="fisrt_name"
       :counter="10"
       :rules="nameRules"
       label="First Name"
       required
     ></v-text-field>
-      </v-text-field>
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="last_name"
       :counter="10"
       :rules="nameRules"
       label="Last Name"
@@ -97,7 +96,7 @@
     ></v-text-field>
             
     <v-text-field class="ma-6"
-      v-model="phoneNumber"
+      v-model="phone_no"
       :rules="phoneNumberRules"
       
       label="Phone number"
@@ -109,9 +108,9 @@
       label="Address"
       required
     ></v-text-field>
-     <v-select :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
+     <v-select v-model="gender" :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="useranme"
       :counter="10"
       :rules="nameRules"
       label="User Name"
@@ -125,7 +124,10 @@
       required
     ></v-text-field>
 
-    <v-btn class="ma-6 success"> Create Account </v-btn>
+    <v-btn @click="submit"
+       :disabled="!valid"
+        class="ma-6 success"> 
+        Register </v-btn>
     </v-from>
     </v-card>
         </v-tab-item>
@@ -187,7 +189,7 @@
       label="Password"
       required
     ></v-text-field>
-  <v-btn class="ma-6 success"> Create Account </v-btn>
+  <v-btn class="ma-6 success"> Register </v-btn>
     
     </v-from>
     </v-card>
@@ -200,6 +202,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
  
     data() {
@@ -234,9 +238,40 @@ export default {
       ],     
            
      }
-        }
-        
-        
-    }
+        },
+          
+ methods: {
+   
+  submit()  {
+    if (this.$refs.form.validate()) {
+      return axios({
+        method: 'post',
+          data: {
+            fisrt_name: this.fisrt_name,
+            last_name: this.last_name,
+            email: this.email,
+            phoneNumber: this.phoneNumber,
+            address: this.address,
+            gender: this.gender,
+            username: this.username,
+            password: this.password,
+      },
+   url: 'http://localhost:3000/controllers/customers',
+    headers: {
+       'Content-Type': 'application/json',
+      },
+    })
+   .then(() => {
+     this.$router.push({ name: 'Admin' });
+     //this.$refs.form.reset();
+ })
+    .catch(() => {
+     });
+      }
+   return true;
+ },
+      }
+  }
+ 
 
 </script>

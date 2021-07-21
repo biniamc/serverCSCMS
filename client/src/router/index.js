@@ -17,8 +17,12 @@ const router = new VueRouter({
   mode:'history',
   routes:[
     {path:'/',component:Home},
+   
       {path:'/Noncustomer',component:Noncustomer},
      {path:'/Login',component:Login},
+     {path:'/Admin',component:Admin},
+       
+     {path:'/create-account',component:CreateAccount},
    ]
  })
 
