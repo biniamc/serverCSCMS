@@ -10,16 +10,16 @@
 
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >My Account</span>
             <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >Notification</span>
             <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
     
-        <v-btn flat color="blue-grey darken-4">
+        <v-btn text color="blue-grey darken-4">
             <span class="white--text" >Sign Out</span>
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -120,7 +120,7 @@
           <v-expansion-panel-content>
             <v-divider></v-divider>
 
-            <v-card flat class="pa-3" v-for="info in infos" :key="info.title">
+            <v-card text class="pa-3" v-for="info in infos" :key="info.title">
               <v-layout row warp >
                 <v-flex xs12 md6>
                   <div class="caption grey--text ">Name</div>
@@ -159,6 +159,7 @@
 
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
@@ -201,6 +202,18 @@ export default {
        { title: 'Users 3', date: '23st june 2019', status: 'deleted'},
       ]
 }
-    }
+    }, // data end
+    mounted(){
+    axios.get('http://localhost:3000/customers')
+    .then((res)=>{
+      this.customers = res.data
+      console.log(res.data.username)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  },
 }
+    
+
 </script>

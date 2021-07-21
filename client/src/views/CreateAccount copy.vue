@@ -10,16 +10,16 @@
 
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn text color="blue-grey darken-4">
+        <v-btn flat color="blue-grey darken-4">
             <span class="white--text" >My Account</span>
             <v-icon right color="white">admin_panel_settings</v-icon>
         </v-btn>
-        <v-btn text color="blue-grey darken-4">
+        <v-btn flat color="blue-grey darken-4">
             <span class="white--text" >Notification</span>
             <v-icon right color="white">circle_notifications</v-icon>
         </v-btn>
     
-        <v-btn text color="blue-grey darken-4">
+        <v-btn flat color="blue-grey darken-4">
             <span class="white--text" >Sign Out</span>
             <v-icon right color="white">exit_to_app</v-icon>
         </v-btn>
@@ -71,29 +71,33 @@
     </v-tab>
 <!--  first tabs -->
         <v-tab-item>
-          <v-card text>
-         <v-form ref="form" v-model="valid" lazy-validation>
+          <v-card flat >
+         <v-from ref="form" v-model="valid" lazy-validation>
    <v-text-field class="ma-6"
-      v-model="first_name"
+      v-model="fisrt_name"
       :counter="10"
+      :rules="nameRules"
       label="First Name"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
       v-model="last_name"
       :counter="10"
+      :rules="nameRules"
       label="Last Name"
       required
     ></v-text-field>
     
    <v-text-field class="ma-6"
       v-model="email"
+      :rules="emailRules"
       label="E-mail"
       required
     ></v-text-field>
             
     <v-text-field class="ma-6"
       v-model="phone_no"
+      :rules="phoneNumberRules"
       label="Phone number"
       required
     ></v-text-field>
@@ -105,14 +109,16 @@
     ></v-text-field>
      <v-select v-model="gender" :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
     <v-text-field class="ma-6"
-      v-model="username"
+      v-model="useranme"
       :counter="10"
+      :rules="nameRules"
       label="User Name"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
       v-model="password"
       :counter="10"
+      :rules="passwordRules"
       label="Password(BP number)"
       required
     ></v-text-field>
@@ -121,12 +127,12 @@
        :disabled="!valid"
         > 
         Register </v-btn>
-    </v-form>
+    </v-from>
     </v-card>
         </v-tab-item>
 <v-tab-item>
     <!-- second tab -->
-    <!-- <v-card text>
+    <v-card flat>
         <v-from ref="form" v-model="valid" lazy-validation>
           
      <v-text-field class="ma-6"
@@ -185,8 +191,8 @@
   <v-btn class="ma-6 success"> Register </v-btn>
     
     </v-from>
-    </v-card> -->
-   </v-tab-item> 
+    </v-card>
+   </v-tab-item>
 
   </v-tabs>
 </v-card>
@@ -209,12 +215,12 @@ export default {
 
             ],
            valid: true,
-      first_name: '',
+      firstname: '',
       // firstnameRules: [
       //   v => !!v || 'Fisrt Name is required',
       //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       // ],
-      last_name: '',
+      lastname: '',
       // lastnameRules: [
       //   v => !!v || 'Last Name is required',
       //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
@@ -247,7 +253,7 @@ export default {
   submit()  {
     //if (this.$refs.form.validate()) {
       let newUser= {
-        first_name: this.first_name,
+        fisrt_name: this.fisrt_name,
             last_name: this.last_name,
             email: this.email,
             phone_no: this.phone_no,
@@ -268,14 +274,14 @@ export default {
 //        'Content-Type': 'application/json',
 //       },
 //     })
-   .then(() => {
-     this.$router.push({ path: 'admin' });
-     this.$refs.form.reset();
- })
-    .catch((err) => {
-      console.log(err)
-     });
-     //} // VALIDATION END
+//    .then(() => {
+//      this.$router.push({ name: 'Admin' });
+//      this.$refs.form.reset();
+//  })
+//     .catch((err) => {
+//       console.log(err)
+//      });
+     // }
    return true;
  },
       }
