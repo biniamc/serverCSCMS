@@ -1,4 +1,4 @@
-<template>
+<!---<template>
 <v-container >
  <v-form
     ref="form"
@@ -59,7 +59,6 @@
     <v-select
       v-model="select"
       :items="items"
-      :rules="[v => !!v || ' Case is required']"
       label="Case"
       required
     ></v-select>
@@ -75,7 +74,6 @@
 
     <v-btn
       class="mr-4"
-      name="submit"
       @click="noncustomer"
       :disabled="!valid"
       color="success"
@@ -92,29 +90,29 @@ export default {
     data: () => ({
       valid: true,
       Fname: '',
-      firstRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
-      ],
+      // firstRules: [
+      //   v => !!v || 'Name is required',
+      //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+      // ],
       Lname: '',
-      lastRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
-      ],
+      // lastRules: [
+      //   v => !!v || 'Name is required',
+      //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+      // ],
       
        phone_no: '',
-      phoneNumberRules: [
-        [v => !!v || 'This field is required',
-        v => /^\d+$/.test(v)||'This field only accept numbers']
-      ],
+      // phoneNumberRules: [
+      //   [v => !!v || 'This field is required',
+      //   v => /^\d+$/.test(v)||'This field only accept numbers']
+      // ],
       location: '',
-      locationRules: [
-        v => !!v || 'Location is required',
-      ],
+      // locationRules: [
+      //   v => !!v || 'Location is required',
+      // ],
       description:'',
-      descriptionRules:[
-        v => !!v || 'Location is required',
-      ],
+      // descriptionRules:[
+      //   v => !!v || 'Location is required',
+      // ],
       select: null,
       items: [
         'Fire',
