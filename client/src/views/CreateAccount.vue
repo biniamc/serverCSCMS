@@ -126,66 +126,59 @@
         </v-tab-item>
 <v-tab-item>
     <!-- second tab -->
-    <!-- <v-card text>
-        <v-from ref="form" v-model="valid" lazy-validation>
+    <v-card text>
+        <v-form ref="form" v-model="valid" lazy-validation>
           
      <v-text-field class="ma-6"
-      v-model="number"
+      v-model="emp_id"
       :counter="10"
-      :rules="idRules"
       label="Emp ID"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="fname"
       :counter="10"
-      :rules="nameRules"
       label="First Name"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="lname"
       :counter="10"
-      :rules="nameRules"
       label="Last Name"
       required
     ></v-text-field>
 
     <v-text-field class="ma-6"
-      v-model="email"
-      :rules="emailRules"
+      v-model="email2"
       label="E-mail"
       required
     ></v-text-field> 
      <v-text-field class="ma-6"
-      v-model="phoneNumber"
-      :rules="phoneNumberRules"
-      
+      v-model="phone_no2"
       label="Phone number"
       required
     ></v-text-field>
-     <v-select :items="['Female', 'Male']" label="Gender" class="ma-6"></v-select>
-     <v-select :items="['Meberat Haile', 'Kidane Mihret']" label="Branch" class="ma-6"></v-select>
-    <v-select :items="['Assistant', 'Manager','Operation Maintenance', 'Care Worker']" label="Department" class="ma-6"></v-select>
+     <v-select :items="['Female', 'Male']" label="Gender" class="ma-6" v-model="gender2"></v-select>
+     <v-select :items="['Meberat Haile', 'Kidane Mihret']" label="Branch" class="ma-6" v-model="branch" ></v-select>
+    <v-select :items="['Assistant', 'Manager','Operation Maintenance', 'Care Worker']" label="Department" class="ma-6" v-model="department"></v-select>
   
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="username2"
       :counter="10"
-      :rules="nameRules"
       label="User Name"
       required
     ></v-text-field>
     <v-text-field class="ma-6"
-      v-model="password"
+      v-model="password2"
       :counter="10"
-      :rules="passwordRules"
       label="Password"
       required
     ></v-text-field>
-  <v-btn class="ma-6 success"> Register </v-btn>
+  <v-btn class="ma-6 success" @click="submit2"
+       :disabled="!valid"> Register </v-btn>
     
-    </v-from>
-    </v-card> -->
+    </v-form>
+    </v-card>
    </v-tab-item> 
 
   </v-tabs>
@@ -238,16 +231,51 @@ export default {
       // ],   
         
         password: '',
-       
+
+
+        //for second tab
+      emp_id:'',
+      fname:'',
+      lname:'',
+      email2:'',
+      phone_no2:'',
+      gender2:'',
+      branch:'',
+      department:'',
+      username2:'',
+      password2:'', 
      }
         },
           
  methods: {
+   submit2(){
+     let newUser= {
+            emp_id: this.emp_id,
+            fname: this.fname,
+            lname: this.lname,
+            email2: this.email,
+            phone_no2: this.phone_no,
+            gender2: this.gender2,
+            branch: this.branch,
+            department: this.department,
+            username2: this.username2,
+            password2: this.password2,
+      }
+      console.log("newuser", newUser);
+      axios.post('http://localhost:3000/employees', newUser)
+      .then(() => {
+     this.$router.push({ path: 'admin' });
+     this.$refs.form.reset();
+ })
+    .catch((err) => {
+      console.log(err)
+     });
+   },
    
   submit()  {
     //if (this.$refs.form.validate()) {
       let newUser= {
-        first_name: this.first_name,
+            first_name: this.first_name,
             last_name: this.last_name,
             email: this.email,
             phone_no: this.phone_no,
@@ -265,7 +293,7 @@ export default {
 //       },
 //    url: 'http://localhost:3000/customers',
 //     headers: {
-//        'Content-Type': 'application/json',
+//        'main-Type': 'application/json',
 //       },
 //     })
    .then(() => {
