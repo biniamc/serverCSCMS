@@ -31,20 +31,20 @@
     <v-text-field
       v-model="Fname"
       :counter="10"
-      :rules="nameRules"
+      :rules="FnameRules"
       label="Fisrt Name"
       required
     ></v-text-field>
     <v-text-field
       v-model="Lname"
       :counter="10"
-      :rules="nameRules"
+      :rules="LnameRules"
       label="Last Name"
       required
     ></v-text-field>
      <v-text-field
-      v-model="phoneNumber"
-      :rules="phoneNumberRules"
+      v-model="phone_no"
+      :rules="phone_noRules"
       
       label="Phone number"
       required
@@ -69,7 +69,7 @@
       v-model="description"
       clearable
       clear-icon="mdi-close-circle"
-     value="Please fill your report here"
+     lable="Please fill your report here"
     ></v-textarea>
 
     <v-btn
@@ -94,18 +94,18 @@ export default {
     data: () => ({
       valid: true,
       Fname: '',
-      nameRules: [
+      FnameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
       Lname: '',
-      nameRules: [
+      FnameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
       
-       phoneNumber: '',
-      phoneNumberRules: [
+       phone_no: '',
+      phone_noRules: [
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
       ],
@@ -120,6 +120,7 @@ export default {
         'Accident',
         'Rain',
       ],
+      description:'',
      
     }),
 
@@ -131,7 +132,7 @@ export default {
           data: {
             Fname: this.Fname,
             Lname: this.Lname,
-            phoneNumber: this.phoneNumber,
+            phone_no: this.phone_no,
             location: this.location,
             select: this.select,
             description: this.description,
