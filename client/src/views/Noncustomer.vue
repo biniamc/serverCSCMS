@@ -29,27 +29,33 @@
         
     
     <v-text-field
-      v-model="name"
+      v-model="Fname"
       :counter="10"
-      :rules="nameRules"
-      label="Name"
+      :rules="FnameRules"
+      label="Fisrt Name"
       required
     ></v-text-field>
-
     <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
+      v-model="Lname"
+      :counter="10"
+      :rules="LnameRules"
+      label="Last Name"
       required
     ></v-text-field>
      <v-text-field
-      v-model="phoneNumber"
-      :rules="phoneNumberRules"
+      v-model="phone_no"
+      :rules="phone_noRules"
       
       label="Phone number"
       required
     ></v-text-field>
-
+   <v-text-field
+      v-model="location"
+      :counter="10"
+      :rules="nameRules"
+      label="location"
+      required
+    ></v-text-field>
     <v-select
       v-model="select"
       :items="items"
@@ -57,13 +63,14 @@
       label="Case"
       required
     ></v-select>
+    
+ 
     <v-textarea
+      v-model="description"
       clearable
       clear-icon="mdi-close-circle"
-     value="Please fill your report here"
+     lable="Please fill your report here"
     ></v-textarea>
-
-   
 
     <v-btn
       :disabled="!valid"
@@ -83,23 +90,28 @@
 <script>
 
 export default {
-    name:"Noncustomer",
+    name:"app",
     data: () => ({
       valid: true,
-      name: '',
-      nameRules: [
+      Fname: '',
+      FnameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      Lname: '',
+      FnameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
       ],
-       phoneNumber: '',
-      phoneNumberRules: [
+      
+       phone_no: '',
+      phone_noRules: [
         [v => !!v || 'This field is required',
         v => /^\d+$/.test(v)||'This field only accept numbers']
+      ],
+      location: '',
+      locationRules: [
+        v => !!v || 'Location is required',
       ],
       select: null,
       items: [
@@ -108,13 +120,39 @@ export default {
         'Accident',
         'Rain',
       ],
+      description:'',
      
     }),
 
     methods: {
       validate () {
-        this.$refs.form.validate()
+        if (this.$refs.form.validate()){
+        return axios({
+        method: 'post',
+          data: {
+            Fname: this.Fname,
+            Lname: this.Lname,
+            phone_no: this.phone_no,
+            location: this.location,
+            select: this.select,
+            description: this.description,
       },
-    },
-  }
+   url: 'http://localhost:3000/controllers/emergencys',
+    headers: {
+       'Content-Type': 'application/json',
+      },
+    })
+   .then(() => {
+     this.$router.push({ path:'/',component:Home});
+     this.$refs.form.reset();
+ })
+    .catch(() => {
+     });
+      }
+   return true;
+ },
+      }
+      
+    }
+  
 </script>

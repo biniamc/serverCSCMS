@@ -10,7 +10,7 @@
         to="/"
         tag="v-btn"
       >
-  <v-btn text>
+  <v-btn text name="home" >
        Home
         
       </v-btn>
@@ -19,7 +19,7 @@
         to="/Noncustomer"
         tag="v-btn"
       >
-      <v-btn text>
+      <v-btn text name="non-customer">
          Non-customer
         
       </v-btn>
@@ -28,7 +28,7 @@
         to="/Login"
         tag="v-btn"
       >
-      <v-btn text>
+      <v-btn text name="login">
           Log in
       </v-btn>
       </router-link>
