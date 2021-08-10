@@ -6,14 +6,14 @@ const Employee = require('../models/Employee.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/employees', (req, res) => {
-  Employee.find({}, 'emp_id fullname username email password phone_no department gender', function (error, employees) {
+  Employee.find({}, 'emp_id first_name last_name email phone_no gender branch department user_name password', function (error, employees) {
   if (error) { console.log(error); }
   res.send(employees);
   })
 })
 //get a single user details
 app.get('/employee/:id', (req, res) => {
-  Employee.findById(req.params.id, 'emp_id fullname username email password phone_no department gender', function (error, employee) {
+  Employee.findById(req.params.id, 'emp_id first_name last_name email phone_no gender branch department user_name password', function (error, employee) {
   if (error) { console.log(error); }
   res.send(employee)
  })
@@ -24,13 +24,15 @@ app.get('/employee/:id', (req, res) => {
   app.post('/employees', (req, res) => {
     const newEmployee = new Employee({
       emp_id: req.body.emp_id,
-      fullname: req.body.fullname,
-      username: req.body.username,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
-      password: req.body.password, 
       phone_no: req.body.phone_no,
+      gender: req.body.gender,
+      branch: req.body.branch,
       department: req.body.department,
-      gender: req.body.gender
+      user_name: req.body.user_name,
+      password: req.body.password, 
     });
         newEmployee.save((error, employee) => {
         if (error) { console.log(error); }
@@ -40,20 +42,19 @@ app.get('/employee/:id', (req, res) => {
 
        // update a user
   app.put('/employee/:id', (req, res) => {
-    Employee.findById(req.params.id, 'emp_id fullname username email password phone_no department gender', function (error, customer) {
+    Employee.findById(req.params.id, 'emp_id first_name last_name email phone_no gender branch department user_name password', function (error, employee) {
     if (error) { console.error(error); }
-    const newEmployee = new Employee({
-      emp_id: req.body.emp_id,
-      fullname: req.body.fullname,
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password, 
-      phone_no: req.body.phone_no,
-      department: req.body.department,
-      gender: req.body.gender
-
-    });
-       newEmployee.save(function (error, employee) {
+      employee.emp_id= req.body.emp_id
+      employee.first_name= req.body.first_name
+      employee.last_name= req.body.last_name
+      employee.email= req.body.email
+      employee.phone_no= req.body.phone_no
+      employee.gender= req.body.gender  
+      employee.branch= req.body.branch
+      employee.department= req.body.department
+      employee.user_name= req.body.user_name
+      employee.password= req.body.password
+       employee.save(function (error, employee) {
     if (error) { console.log(error); }
        res.send(employee)
     })

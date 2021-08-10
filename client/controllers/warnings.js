@@ -6,14 +6,14 @@ const Warning = require('../models/Warning.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/warnings', (req, res) => {
-  Warning.find({}, 'emp_id date description', function (error, warning) {
+  Warning.find({}, 'emp_id date description caseWorker', function (error, warning) {
   if (error) { console.log(error); }
   res.send(warning);
   })
 })
 //get a single user details
 app.get('/warning/:id', (req, res) => {
-  Warning.findById(req.params.id, 'emp_id date description', function (error, warning) {
+  Warning.findById(req.params.id, 'emp_id date description caseWorker', function (error, warning) {
   if (error) { console.log(error); }
   res.send(warning)
  })
@@ -25,7 +25,8 @@ app.get('/warning/:id', (req, res) => {
      const newWarning = new Warning({
       emp_id: req.body.emp_id, 
       date: req.body.date,
-      description: req.body.description
+      description: req.body.description,
+      caseWorker: req.body.caseWorker
     });
         newWarning.save((error, warning) => {
         if (error) { console.log(error); }
@@ -40,6 +41,7 @@ app.get('/warning/:id', (req, res) => {
       warning.emp_id=req.body.emp_id
       warning.date = req.body.date
       warning.description = req.body.description
+      warning.caseWorker= req.body.caseWorker
        warning.save(function (error, warning) {
     if (error) { console.log(error); }
        res.send(warning)

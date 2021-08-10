@@ -31,20 +31,20 @@
     <v-text-field
       v-model="Fname"
       :counter="10"
-      :rules="firstRules"
+      
       label="Fisrt Name"
       required
     ></v-text-field>
     <v-text-field
       v-model="Lname"
       :counter="10"
-      :rules="lastRules"
+      
       label="Last Name"
       required
     ></v-text-field>
      <v-text-field
       v-model="phone_no"
-      :rules="phoneNumberRules"
+      
       
       label="Phone number"
       required
@@ -52,14 +52,14 @@
    <v-text-field
       v-model="location"
       :counter="10"
-      :rules="locationRules"
+      
       label="location"
       required
     ></v-text-field>
     <v-select
       v-model="select"
       :items="items"
-      :rules="[v => !!v || ' Case is required']"
+      
       label="Case"
       required
     ></v-select>
@@ -67,16 +67,16 @@
  
     <v-textarea
       v-model="description"
-      :rules="descriptionRules"
+      
       clearable
       clear-icon="mdi-close-circle"
-     value="Please fill your report here"
+     lable="Please fill your report here"
     ></v-textarea>
 
     <v-btn
       class="mr-4"
-      name="submit"
-      @click="noncustomer"
+      v-model="send"
+      @click="send"
       :disabled="!valid"
       color="success"
     >Send
@@ -86,35 +86,36 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
     name:"app",
     data: () => ({
       valid: true,
       Fname: '',
-      firstRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
-      ],
+      // FnameRules: [
+      //   v => !!v || 'Name is required',
+      //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+      // ],
       Lname: '',
-      lastRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 20) || 'Name must be less than 10 characters',
-      ],
+      // LnameRules: [
+      //   v => !!v || 'Name is required',
+      //   v => (v && v.length <= 20) || 'Name must be less than 10 characters',
+      // ],
       
        phone_no: '',
-      phoneNumberRules: [
-        [v => !!v || 'This field is required',
-        v => /^\d+$/.test(v)||'This field only accept numbers']
-      ],
+      // phone_noRules: [
+      //   [v => !!v || 'This field is required',
+      //   v => /^\d+$/.test(v)||'This field only accept numbers']
+      // ],
       location: '',
-      locationRules: [
-        v => !!v || 'Location is required',
-      ],
+      // locationRules: [
+      //   v => !!v || 'Location is required',
+      // ],
       description:'',
-      descriptionRules:[
-        v => !!v || 'Location is required',
-      ],
+      // descriptionRules:[
+      //   v => !!v || 'Location is required',
+      // ],
       select: null,
       items: [
         'Fire',
@@ -122,11 +123,13 @@ export default {
         'Accident',
         'Rain',
       ],
+      description:'',
      
     }),
 
     methods: {
-      noncustomer () {
+      send () {
+        console.log('datra:',this.Fname)
         if (this.$refs.form.validate()){
         return axios({
         method: 'post',

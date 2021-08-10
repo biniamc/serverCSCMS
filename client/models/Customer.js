@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
- fisrt_name: String,
+ first_name: String,
  last_name: String,
  email: String,
  phone_no: Number,
- address: Number,
+ address: String,
  gender: String,
- username: String,
+ user_name: String,
  password: String
 },{collection: "customer"});
 const Customer = mongoose.model('Customer', CustomerSchema)

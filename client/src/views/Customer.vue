@@ -14,9 +14,9 @@
       <v-toolbar-title  class="white--text">CSCMS</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-content>
       <!--  -->
-    </v-main>
+    </v-content>
   </v-app>
 </template>
 

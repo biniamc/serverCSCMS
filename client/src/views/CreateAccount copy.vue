@@ -143,7 +143,7 @@
       required
     ></v-text-field>
     <v-text-field class="ma-6"
-      v-model="name"
+      v-model="Fname"
       :counter="10"
       :rules="nameRules"
       label="First Name"
@@ -204,6 +204,9 @@
 import axios from 'axios';
 
 export default {
+  data (){
+      
+  },
  
     data() {
         return {

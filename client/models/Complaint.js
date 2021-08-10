@@ -2,11 +2,20 @@ const mongoose = require('mongoose');
 //create complaint schema
 const Schema = mongoose.Schema;
 const ComplaintSchema = new Schema({
- name: String,
+ user_name: String,
  address: String,
  phone_no: Number,
- date: Number,
- description: String
+ date: String,
+ description: String,
+ type:{
+     type: String,
+     default:null,
+    },
+ subComplaint:{
+        type: String,
+        default:null,
+    }
+
 },{collection: "complaint"});
 const Complaint = mongoose.model('Complaint', ComplaintSchema)
 module.exports = Complaint;

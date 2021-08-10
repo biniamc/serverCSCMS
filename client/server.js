@@ -10,6 +10,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 //connect to mongodb
+// const MongooseCollection = require('../../mongoosecollection');
 mongoose.connect('mongodb://127.0.0.1:27017/CSCMS', function() {
  console.log('Connection has been made');
 })

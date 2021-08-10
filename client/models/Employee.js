@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const EmployeeSchema = new Schema({
  emp_id: String,
- full_name: String,
- username: String,
+ first_name: String,
+ last_name: String,
  email: String,
- password: String,
  phone_no: Number,
+ gender: String,
+ branch: String,
  department: String,
- gender: String
+ user_name: String,
+ password: String
 },{collection: "employee"});
 const Employee = mongoose.model('Employee', EmployeeSchema)
 module.exports = Employee;
