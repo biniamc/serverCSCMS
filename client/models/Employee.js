@@ -12,6 +12,7 @@ const EmployeeSchema = new Schema({
  branch: String,
  department: String,
  user_name: String,
+ type:String,
  password: String
 },{collection: "employee"});
 const Employee = mongoose.model('Employee', EmployeeSchema)
