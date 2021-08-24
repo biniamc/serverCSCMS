@@ -6,14 +6,14 @@ const Complaint = require('../models/Complaint.js');
 module.exports.controller = function (app) {
   // get all complaints
   app.get('/complaints', (req, res) => {
-    Complaint.find({}, 'user_name address phone_no date description type subComplaint', function (error, users) {
+    Complaint.find({}, 'user_name address phone_no date description type subComplaint status', function (error, users) {
       if (error) { console.log(error); }
       res.send(users);
     })
   })
   //get a single complaints details
   app.get('/complaints/:id', (req, res) => {
-    Complaint.findById(req.params.id, 'user_name address phone_no date description type subComplaint', function (error, user) {
+    Complaint.findById(req.params.id, 'user_name address phone_no date description type subComplaint status', function (error, user) {
       if (error) { console.log(error); }
       res.send(user)
     })
@@ -29,7 +29,8 @@ module.exports.controller = function (app) {
       date: req.body.date,
       description: req.body.description,
       type: req.body.type,
-      subComplaint:req.body.subComplaint
+      subComplaint:req.body.subComplaint,
+      status: req.body.status,
     });
     newComplaint.save((error, complaint) => {
       if (error) { console.log(error); }
@@ -53,6 +54,7 @@ module.exports.controller = function (app) {
       complaint.description = req.body.description
       complaint.type = req.body.type
       complaint.subComplaint=req.body.subComplaint
+      complaint.status = req.body.status
 
       complaint.save(function (error, complaints) {
         if (error) { console.log(error); }

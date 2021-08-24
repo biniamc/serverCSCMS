@@ -1,12 +1,12 @@
 /* eslint-disable */
 const express = require('express');
 const bodyParser = require('body-parser');
-const Emergency = require('../models/Emergency_report.js');
+const Emergency = require('../models/Emergency.js');
 //const router = express.Router();
 module.exports.controller = function (app)  {
  // get all users
  app.get('/emergencys', (req, res) => {
-  Emergency.find({}, 'Fname Lname phone_no location case description', function (error, emergency) {
+  Emergency.find({}, 'first_name last_name phone_no location select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency);
   })
@@ -14,7 +14,7 @@ module.exports.controller = function (app)  {
 
 //get a single user details
 app.get('/emergency/:id', (req, res) => {
-  Emergency.findById(req.params.id, 'Fname Lname phone_no location case description', function (error, emergency) {
+  Emergency.findById(req.params.id, 'first_name last_name phone_no location select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency)
  })
@@ -24,8 +24,8 @@ app.get('/emergency/:id', (req, res) => {
  // add a new user
     app.post('/emergencys', (req, res) => {
       const newEmergency = new Emergency({
-      Fname: req.body.Fname,
-      Lname: req.body.Lname,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       phone_no: req.body.phone_no,
       location: req.body.location,
       select: req.body.select,
@@ -39,10 +39,10 @@ app.get('/emergency/:id', (req, res) => {
 
      // update a user
   app.put('/emergency/:id', (req, res) => {
-    Emergency.findById(req.params.id, 'Fname Lname phone_no location case description', function (error, emergency) {
+    Emergency.findById(req.params.id, 'first_name last_name phone_no location case description', function (error, emergency) {
     if (error) { console.error(error); }
-      emergency.Fname = req.body.Fname
-      emergency.Lname = req.body.Lname
+      emergency.first_name = req.body.first_name
+      emergency.last_name = req.body.last_name
       emergency.phone_no = req.body.phone_no
       emergency.location = req.body.location
       emergency.select = req.body.select

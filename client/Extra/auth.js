@@ -8,11 +8,11 @@ module.exports = {
     },
     saveCredential(token, data){
 
-        console.log("got function");
+        console.log("saving");
         try {
             let creds = this.getCredentials();
             creds[token] = data;
-            fs. writeFileSync( 'credentials.json' , JSON.stringify(creds));
+            fs. writeFileSync( './Extra/credentials.json' , JSON.stringify(creds));
         } catch( err) {
             throw err;
         }
@@ -21,11 +21,12 @@ module.exports = {
     getCredentials(){
 
         try {
-            return JSON.parse(fs.readFileSync( 'credentials.json' , { encoding: 'utf8' }));
+            return JSON.parse(fs.readFileSync( './Extra/credentials.json' , { encoding: 'utf8' }));
         } catch( err) {
             throw err;
         }
 
+        //D:/projects/CSCMSserver/Extra/
     },
     deleteCredentials(token){
 

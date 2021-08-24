@@ -5,10 +5,12 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const EmergencySchema = new Schema({
- name: String,
+ first_name: String,
+ last_name: String,
+ email: String,
  phone_no: Number,
  location: String,
- case: String,
+ select: String,
  description: String
 },{collection: "emergency_report"});
 const Emergency= mongoose.model('Emergency', EmergencySchema)

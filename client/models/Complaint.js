@@ -14,6 +14,10 @@ const ComplaintSchema = new Schema({
  subComplaint:{
         type: String,
         default:null,
+    },
+ status:{
+        type: String,
+        default:null,
     }
 
 },{collection: "complaint"});
