@@ -6,7 +6,7 @@ const Emergency = require('../models/Emergency.js');
 module.exports.controller = function (app)  {
  // get all users
  app.get('/emergencys', (req, res) => {
-  Emergency.find({}, 'first_name last_name phone_no location select description', function (error, emergency) {
+  Emergency.find({}, 'first_name last_name phone_no location department select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency);
   })
@@ -14,7 +14,7 @@ module.exports.controller = function (app)  {
 
 //get a single user details
 app.get('/emergency/:id', (req, res) => {
-  Emergency.findById(req.params.id, 'first_name last_name phone_no location select description', function (error, emergency) {
+  Emergency.findById(req.params.id, 'first_name last_name phone_no location department select description', function (error, emergency) {
   if (error) { console.log(error); }
   res.send(emergency)
  })
@@ -28,6 +28,7 @@ app.get('/emergency/:id', (req, res) => {
       last_name: req.body.last_name,
       phone_no: req.body.phone_no,
       location: req.body.location,
+      department: req.body.department,
       select: req.body.select,
       description: req.body.description
     });
@@ -39,7 +40,7 @@ app.get('/emergency/:id', (req, res) => {
 
      // update a user
   app.put('/emergency/:id', (req, res) => {
-    Emergency.findById(req.params.id, 'first_name last_name phone_no location case description', function (error, emergency) {
+    Emergency.findById(req.params.id, 'first_name last_name phone_no location department select description', function (error, emergency) {
     if (error) { console.error(error); }
       emergency.first_name = req.body.first_name
       emergency.last_name = req.body.last_name

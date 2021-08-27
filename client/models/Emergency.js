@@ -10,6 +10,7 @@ const EmergencySchema = new Schema({
  email: String,
  phone_no: Number,
  location: String,
+ department: String,
  select: String,
  description: String
 },{collection: "emergency_report"});
