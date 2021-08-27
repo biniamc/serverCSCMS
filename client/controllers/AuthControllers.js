@@ -6,14 +6,14 @@ const auth = require('../Extra/auth');
 
 module.exports.controller = function (app) {
 
-    app.post('/Login', (req, res) => {
+    app.post('/customer_login', (req, res) => {
 
         try{
 
             let result = {};
 
             Customers.findOne({
-                user_name: req.body.username,
+                user_name: req.body.user_name,
                 password: req.body.password,
             }, function(err, result_data) {
 
@@ -25,7 +25,7 @@ module.exports.controller = function (app) {
 
                             let token = auth.getToken(15);
                             result.id = result_data._id;
-                            result.username = result_data.username;
+                            result.user_name = result_data.user_name;
                             result.type = "customer"
 
                             auth.saveCredential(token, result);
